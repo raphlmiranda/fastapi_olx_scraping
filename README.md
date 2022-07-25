@@ -1,6 +1,6 @@
 # fastapi_olx_scraping
 
-A API based on Webscraping on OLX.
+A API based Webscraping on OLX.
 
 # Accept endpoints
 |endpoint| method|
