@@ -1,0 +1,26 @@
+version: '3.9'
+
+services:
+  scraping:
+    build: .
+    command: uvicorn app.api:app --host 0.0.0.0 --port 8000
+    volumes:
+      - .:/usr/src/scraping
+    ports:
+      - 8000:8000
+    depends_on:
+      - db
+
+  db:
+    image: postgres:14.0
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=scraping
+    expose: 
+      - 5432
+
+volumes:
+  postgres_data:
